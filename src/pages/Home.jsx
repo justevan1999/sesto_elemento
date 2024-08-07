@@ -227,9 +227,9 @@ const Home = () => {
       </div>
 
       <div className="rech-out-section">
-        <div>
+        <div className="the-text">
           <div>
-            <h1>Reach Out to Us</h1>
+            <h1 className="reach-top-text">Reach Out to Us</h1>
           </div>
           <div className="reach-reach">
             <div>
@@ -280,14 +280,14 @@ const Home = () => {
           </div>
         </div>
         <div>
-          <img src={Calling} alt="" />
+          <img className="the-call" src={Calling} alt="" />
         </div>
       </div>
       <div className="footer-main-main">
         <div className="footer-main">
           <div className="logo-footer">
-            <img src={Logo2} alt="" />
-            <p>Delivering maximum value by leveraging on our global sourcing networks</p>
+            <img style={{paddingBottom: "10px"}} src={Logo2} alt="" />
+            <p>Delivering maximum value by leveraging <br /> on our global sourcing networks</p>
           </div>
           <div className="footer-contents">
             <div>
@@ -327,9 +327,15 @@ const Home = () => {
             <div>
               <img src={Insta2} alt="" />
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div>
+              <img src={Facebk} alt="" />
+            </div>
+            <div>
+              <img src={Twitt} alt="" />
+            </div>
+            <div>
+              <img src={Linked} alt="" />
+            </div>
           </div>
         </div>
       </div>
