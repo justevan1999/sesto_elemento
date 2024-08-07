@@ -861,5 +861,16 @@ br {
   font-size: 18px;
   padding: 19px;
 }
+.copy {
+  align-items: center !important;
+  text-align: center !important;
+  display: block !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-top: 0 !important;
+}
 
+.copy-icons {
+  justify-content: center !important;
+}
 }
