@@ -876,6 +876,7 @@ br {
   justify-content: center !important;
 }
 .top-top {
+  height: 10vh !important;
   /* position: sticky !important; */
   /* top: 0 !important; */
   padding: 0 0 !important;
@@ -883,6 +884,6 @@ br {
   /* width: 100% !important; */
 }
 .body-hero {
-  margin-top: 6.2rem !important;
+  margin-top: 5rem !important;
 }
 }
