@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
 import Core1 from "../../src/assets/Group 50 (2).png";
 import Core2 from "../../src/assets/Group 50 (1).png";
@@ -26,33 +26,76 @@ import Call from "../../src/assets/phone-call 1 (1).png";
 import Ig from "../../src/assets/Instagram Outline (2).png";
 import Mail from "../../src/assets/envelope 2 (1).png";
 import Calling from "../../src/assets/Group 34.png";
-// import Logo from "../../src/assets/logo.png";
 import Logo2 from "../../src/assets/Frame 60994.png";
 import Insta2 from "../../src/assets/bi_instagram.png";
 import Facebk from "../../src/assets/Group (7).png";
-import Twitt from "../../src/assets/Group (8).png"
+import Twitt from "../../src/assets/Group (8).png";
 import Linked from "../../src/assets/Group (9).png";
 
+import { Rect1, Rect2, Rect3 } from "../assets";
+
 const Home = () => {
+  // Array of hero section content
+  const heroContent = [
+    {
+      title: "Empowering Success In Projects And Operations",
+      description:
+        "We are an indigenous oil and gas project and operational support servicing company, purposed to provide best-in-class services in markets across Africa and other regions.",
+      backgroundImage: Rect3,  
+    },
+    {
+      title: "Global Technology, Local Inclusion",
+      description:
+        "Guaranteed by our global partnerships, products and services delivered are aligned with advanced technology, giving us the leverage to provide solutions while the required standards are maintained locally.",
+      backgroundImage: Rect2,  
+    },
+    {
+      title: "Procurement and technical services for critical applications",
+      description:
+        "Pioneering procurement and technical solutions to drive efficiency, reliability and critical performance.",
+      backgroundImage: Rect1,  
+    },
+  ];
+
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+
+  // Use Effect to change hero content every 3 seconds
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+     setCurrentHeroIndex(prev => prev === 2 ? 0 : prev + 1)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const currentHero = heroContent[currentHeroIndex];
+
   return (
-    <div>
-      <div className="body-hero">
+    <>
+      {/* Hero Section */}
+      <div
+        className="body-hero"
+        style={{
+          backgroundImage: `url(${currentHero.backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+          
+        }}
+      >
         <div className="hero-content">
           <h1>
-            <span className="change">Empowering</span> Success In Projects And{" "}
-            <span className="change">Operations</span>
+            <span className="change">{currentHero.title}</span>
           </h1>
-          <p>
-            We are an indigenous oil and gas project and operational support
-            servicing company, purposed to provide best-in-class services in
-            markets across Africa and other regions.
-          </p>
+          <p>{currentHero.description}</p>
           <button className="work-btn">Work with us</button>
         </div>
       </div>
 
-      <div className="core-section">
-        <h2
+      {/* Core Values Section */}
+     <div className="core-section" style={{ padding: "20px" }}>
+      <h2
           style={{
             color: "#004865",
             fontWeight: "700",
@@ -86,6 +129,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Why Us Section */}
       <div className="why-section">
         <div className="why-img">
           <img src={Talk} alt="" />
@@ -104,10 +148,7 @@ const Home = () => {
             }}
           >
             Our track record speaks for itself. We have a long history of
-            successfully executing projects of all sizes and complexities. Our
-            satisfied clients have consistently praised our ability to deliver
-            projects on time, within budget, and to the highest quality
-            standards.
+            successfully executing projects of all sizes and complexities.
           </p>
           <button className="work-btn">Work with us</button>
         </div>
@@ -283,6 +324,7 @@ const Home = () => {
           <img className="the-call" src={Calling} alt="" />
         </div>
       </div>
+
       <div className="footer-main-main">
         <div className="footer-main">
           <div className="logo-footer">
@@ -339,7 +381,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

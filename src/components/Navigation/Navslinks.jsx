@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navslinks = () => {
   const [activeLink, setActiveLink] = useState("");
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate()
 
   const links = [
     {
       name: "About Us",
+      url: "/about",
       submenu: true,
       sublinks: [
         { sublink: [{ name: "Mission", link: "/" }, { name: "Vision", link: "/" }] },
@@ -15,6 +17,7 @@ const Navslinks = () => {
     },
     {
       name: "Services",
+      url: "/service",
       submenu: true,
       sublinks: [
         {
@@ -30,6 +33,7 @@ const Navslinks = () => {
     },
     {
       name: "Sectors",
+      url: "/sectors",
       submenu: true,
       sublinks: [
         {
@@ -43,7 +47,7 @@ const Navslinks = () => {
         },
       ],
     },
-    { name: "Our Partners" },
+    { name: "Our Partners", url: "/partners" },
   ];
 
   const handleLinkClick = (linkName) => {
@@ -81,7 +85,7 @@ const Navslinks = () => {
           onMouseLeave={handleMouseLeave}
           onClick={() => isMobile && handleLinkClick(link.name)}
         >
-          <div className="tain">
+          <div onClick={() => navigate(link.url)} className="tain">
             <p
               style={{
                 display: "flex",
