@@ -41,19 +41,19 @@ const Home = () => {
       title: "Empowering Success In Projects And Operations",
       description:
         "We are an indigenous oil and gas project and operational support servicing company, purposed to provide best-in-class services in markets across Africa and other regions.",
-      backgroundImage: Rect3,  
+      backgroundImage: Rect3,
     },
     {
-      title: "Global Technology, Local Inclusion",
+      title: "Global Technology, <br /> Local Inclusion",
       description:
         "Guaranteed by our global partnerships, products and services delivered are aligned with advanced technology, giving us the leverage to provide solutions while the required standards are maintained locally.",
-      backgroundImage: Rect2,  
+      backgroundImage: Rect2,
     },
     {
       title: "Procurement and technical services for critical applications",
       description:
         "Pioneering procurement and technical solutions to drive efficiency, reliability and critical performance.",
-      backgroundImage: Rect1,  
+      backgroundImage: Rect1,
     },
   ];
 
@@ -63,11 +63,11 @@ const Home = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-     setCurrentHeroIndex(prev => prev === 2 ? 0 : prev + 1)
-    }, 3000)
+      setCurrentHeroIndex((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 3000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const currentHero = heroContent[currentHeroIndex];
 
@@ -81,21 +81,33 @@ const Home = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           height: "100vh",
-          
         }}
       >
         <div className="hero-content">
           <h1>
-            <span className="change">{currentHero.title}</span>
+            {currentHero.title.split("<br />").map((part, index) => (
+              <span key={index}>
+                {part.split(" ").map((word, i) => (
+                  <span
+                    key={i}
+                    style={{ color: i % 2 === 0 ? "#004865" : "#42C6EC" }}
+                  >
+                    {word + " "}
+                  </span>
+                ))}
+                {index < currentHero.title.split("<br />").length - 1 && <br />}{" "}
+              </span>
+            ))}
           </h1>
+
           <p>{currentHero.description}</p>
           <button className="work-btn">Work with us</button>
         </div>
       </div>
 
       {/* Core Values Section */}
-     <div className="core-section" style={{ padding: "20px" }}>
-      <h2
+      <div className="core-section" style={{ padding: "20px" }}>
+        <h2
           style={{
             color: "#004865",
             fontWeight: "700",
@@ -328,8 +340,11 @@ const Home = () => {
       <div className="footer-main-main">
         <div className="footer-main">
           <div className="logo-footer">
-            <img style={{paddingBottom: "10px"}} src={Logo2} alt="" />
-            <p>Delivering maximum value by leveraging <br /> on our global sourcing networks</p>
+            <img style={{ paddingBottom: "10px" }} src={Logo2} alt="" />
+            <p>
+              Delivering maximum value by leveraging <br /> on our global
+              sourcing networks
+            </p>
           </div>
           <div className="footer-contents">
             <div>
